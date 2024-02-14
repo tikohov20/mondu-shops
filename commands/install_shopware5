@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd /usr/share/nginx/html/shopware5 || exit
+
+wget -O shopware5.zip https://releases.shopware.com/install_5.7.18_f5172574955007876a6d9f53575ac624c69cbc3f.zip?_gl=1*qrxmgj*_ga*ODkzMjAyNzM1LjE3MDc4NTI0ODg.*_ga_9JLJ6GGB76*MTcwNzg5ODI4My4yLjEuMTcwNzg5ODI5Mi4wLjAuMA..
+
+unzip -q shopware5.zip

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd /usr/share/nginx/html/jtl5 || exit
+
+wget -O jtl5.zip https://build.jtl-shop.de/get/shop-v5-2-4.zip
+
+unzip -q jtl5.zip

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+cd /usr/share/nginx/html/magento || exit
+
+wget -O magento.zip https://github.com/magento/magento2/archive/2.4.6.zip
+
+unzip -q magento.zip
+
+mv ./magento2-2.4.6/* .
+
+rm -r ./magento2-2.4.6
+
+composer install
+
+php -dmemory_limit=1G bin/magento setup:install --base-url=http://magento.local \
+  --db-host=mysql --db-name=magento2 --db-user=root \
+  --db-password=password --admin-firstname=demo \
+  --admin-lastname=demo --admin-email=admin@mondu.ai \
+  --admin-user=demo --admin-password=Password123 --language=en_US \
+  --currency=EUR --timezone=Europe/Berlin --use-rewrites=1 \
+  --elasticsearch-host=elasticsearch --search-engine=elasticsearch7

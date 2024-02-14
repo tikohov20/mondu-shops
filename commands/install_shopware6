@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd /usr/share/nginx/html/shopware6 || exit
+
+composer create-project shopware/production shopware6 -n
+
+mv ./shopware6/* .
