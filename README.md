@@ -44,7 +44,7 @@ After it finishes add following lines to your /etc/hosts
 
 Navigate to any shop and finish the setup. (make sure to use http not https)
 
-Also there is phpmyadmin included, so you can access the database using http://localhsot:8081 URL
+Also there is phpmyadmin included, so you can access the database using http://localhost:8081/ URL
 #### Note
 Plugins currently do not come pre-installed
 
