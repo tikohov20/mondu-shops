@@ -24,6 +24,7 @@ services:
       - ./commands/install_shopware6:/usr/local/bin/install_shopware6
       - ./commands/install_jtl5:/usr/local/bin/install_jtl5
       - ./images/php-fpm/memory.ini:/usr/local/etc/php/conf.d/memory.ini
+      - ./images/php-fpm/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
   # for jtl5 shop...
   apache:
     build:
