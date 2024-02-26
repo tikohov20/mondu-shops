@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+cd /usr/share/nginx/html/woocommerce || exit
+
+wget -O wordpress.zip https://wordpress.org/latest.zip
+
+unzip -q wordpress.zip
+
+mv ./wordpress/* .
+
+rm wordpress.zip
+
+rm -r ./wordpress
+
+wp config create --allow-root --dbname="wordpress" --dbuser="root" --dbpass="password" --dbhost="mysql"
+
+wp --allow-root core install --skip-email --title="Mondu Woocommerce" --admin_user=demo --admin_password=Password123 --admin_email=admin@example.com --url=http://woocommerce.local \
+    && wp --allow-root theme install storefront --activate \
+    && wp --allow-root plugin install woocommerce \
+    && wp --allow-root plugin activate woocommerce \
+    && wp --allow-root plugin install woocommerce-pdf-invoices-packing-slips --activate \
+    && wp --allow-root option set woocommerce_currency "EUR" \
+    && wp --allow-root --user=1 wc product create --name="Simple" --type="simple" --regular_price="1.00" \
+    && wp --allow-root --user=1 wc product create --name="Variable" --type="variable" \
+       --attributes='[ { "name":"size", "variation":"true", "options":"X|XL" } ]'

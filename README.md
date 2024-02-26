@@ -7,11 +7,10 @@
 - Shopware6
 - JTL store 5
 - Magento 2
-
+- Woocommerce ( wordpress )
 ### TODO
 
 - Oxid
-- Woocommerce
 
 ### Use guide
 
@@ -41,6 +40,7 @@ After it finishes add following lines to your /etc/hosts
     127.0.0.1 shopware5.local
     127.0.0.1 shopware6.local
     127.0.0.1 jtl5.local
+    127.0.0.1 woocommerce.local
 
 Navigate to any shop and finish the setup. (make sure to use http not https)
 

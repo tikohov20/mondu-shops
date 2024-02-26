@@ -8,4 +8,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install mysqli pdo pdo_mysql zip bcmath gd intl soap xsl sockets
 RUN docker-php-ext-install opcache
 
+RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x /usr/local/bin/wp
+
 WORKDIR /usr/share/nginx/html/

@@ -23,6 +23,7 @@ services:
       - ./commands/install_magento:/usr/local/bin/install_magento
       - ./commands/install_shopware6:/usr/local/bin/install_shopware6
       - ./commands/install_jtl5:/usr/local/bin/install_jtl5
+      - ./commands/install_woocommerce:/usr/local/bin/install_woocommerce
       - ./images/php-fpm/memory.ini:/usr/local/etc/php/conf.d/memory.ini
       - ./images/php-fpm/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
   # for jtl5 shop...
@@ -56,7 +57,7 @@ services:
     networks:
       - app-network
     ports:
-      - "8081:80"
+      - "9090:80"
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
     networks:
