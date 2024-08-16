@@ -1,0 +1,13 @@
+FROM php:7.0.33-fpm
+
+#COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN echo "deb http://archive.debian.org/debian/ stretch main contrib non-free  \
+    deb http://archive.debian.org/debian/ stretch-proposed-updates main contrib non-free \
+    deb http://archive.debian.org/debian-security stretch/updates main contrib non-free" > /etc/apt/sources.list
+
+RUN apt-get update && apt-get install unzip wget libzip-dev libpng-dev libicu-dev libxml2-dev libxslt-dev libjpeg-dev libfreetype6-dev -y
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install mysqli pdo pdo_mysql zip bcmath gd intl soap xsl sockets
+#RUN curl http://ftp.de.debian.org/debian/pool/main/libz/libzip/libzip-dev_1.7.3-1+b1_amd64.deb -o libzip.deb
+WORKDIR /usr/share/nginx/html/

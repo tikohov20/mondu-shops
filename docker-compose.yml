@@ -11,7 +11,22 @@ services:
       - ./nginx:/etc/nginx/conf.d
     ports:
       - '80:80'
+    depends_on:
+      - php-fpm
+      - apache
+  php70-fpm:
+    build:
+      context: ./images/php-fpm
+      dockerfile: Dockerfile70
+    networks:
+      - app-network
+    volumes:
+      - ./apps:/usr/share/nginx/html
+      - ./images/php-fpm/memory.ini:/usr/local/etc/php/conf.d/memory.ini
+      - ./images/php-fpm/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
   php-fpm:
+    ports:
+      - '8000:8000'
     build:
       context: ./images/php-fpm
       dockerfile: Dockerfile
@@ -24,17 +39,45 @@ services:
       - ./commands/install_shopware6:/usr/local/bin/install_shopware6
       - ./commands/install_jtl5:/usr/local/bin/install_jtl5
       - ./commands/install_woocommerce:/usr/local/bin/install_woocommerce
+      - ./commands/install_woocommerce82:/usr/local/bin/install_woocommerce82
+      - ./commands/install_oxid:/usr/local/bin/install_oxid
       - ./images/php-fpm/memory.ini:/usr/local/etc/php/conf.d/memory.ini
       - ./images/php-fpm/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
   # for jtl5 shop...
+#  apache:
+#    build:
+#      context: ./images/apache
+#    networks:
+#      - app-network
+#    volumes:
+#      - ./apps/jtl5:/var/www/html/
+#      - ./images/apache/additional.ini:/usr/local/etc/php/conf.d/additional.ini
+#    environment:
+#      - APACHE_DOCUMENT_ROOT="/var/www/html"
+#   for oxid shop...
   apache:
     build:
       context: ./images/apache
     networks:
       - app-network
     volumes:
-      - ./apps/jtl5:/var/www/html/
+      - ./apps/oxid:/var/www/html/
       - ./images/apache/additional.ini:/usr/local/etc/php/conf.d/additional.ini
+    environment:
+      - APACHE_DOCUMENT_ROOT="/var/www/html/source"
+  mysql57:
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3357:3306'
+    networks:
+      - app-network
+    command: --init-file /data/application/init.sql
+    volumes:
+      - mysql57_data:/var/lib/mysql
+      - ./images/mysql/init.sql:/data/application/init.sql
   mysql:
     image: mysql/mysql-server
     environment:
@@ -69,6 +112,7 @@ services:
 
 volumes:
   mysql_data:
+  mysql57_data:
 
 networks:
   app-network:

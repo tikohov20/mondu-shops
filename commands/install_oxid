@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cd /usr/share/nginx/html/oxid || exit
+
+
+composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.5-ce
+
+mv ./your_project_name/* .
+
+rm -r ./your_project_name

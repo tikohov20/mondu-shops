@@ -4,4 +4,5 @@ docker exec -it mondu-plugins-php-fpm-1 install_jtl5 && \
 docker exec -it mondu-plugins-php-fpm-1 install_shopware6 && \
 docker exec -it mondu-plugins-php-fpm-1 install_shopware5 && \
 docker exec -it mondu-plugins-php-fpm-1 install_magento && \
-docker exec -it mondu-plugins-php-fpm-1 install_woocommerce
+docker exec -it mondu-plugins-php-fpm-1 install_woocommerce && \
+docker exec -it mondu-plugins-php-fpm-1 install_oxid

@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install unzip wget libzip-dev libpng-dev libicu-de
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install mysqli pdo pdo_mysql zip bcmath gd intl soap xsl sockets
 
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN a2enmod rewrite
 
 WORKDIR /var/www/html/

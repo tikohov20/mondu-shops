@@ -11,4 +11,5 @@ RUN docker-php-ext-install opcache
 RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x /usr/local/bin/wp
 
+RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 WORKDIR /usr/share/nginx/html/

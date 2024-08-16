@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd /usr/share/nginx/html/woocommerce || exit
+cd /usr/share/nginx/html/woocommerce82 || exit
 
 wget -O wordpress.zip https://wordpress.org/latest.zip
 
@@ -12,9 +12,9 @@ rm wordpress.zip
 
 rm -r ./wordpress
 
-wp config create --allow-root --dbname="wordpress" --dbuser="root" --dbpass="password" --dbhost="mysql"
+wp config create --allow-root --dbname="woocommerce82" --dbuser="root" --dbpass="password" --dbhost="mysql"
 
-wp --allow-root core install --skip-email --title="Mondu Woocommerce" --admin_user=demo --admin_password=Password123 --admin_email=admin@example.com --url=http://woocommerce.local \
+wp --allow-root core install --skip-email --title="Mondu Woocommerce" --admin_user=demo --admin_password=Password123 --admin_email=admin@example.com --url=http://woocommerce82.local \
     && wp --allow-root theme install storefront --activate \
     && wp --allow-root plugin install woocommerce \
     && wp --allow-root plugin activate woocommerce \
