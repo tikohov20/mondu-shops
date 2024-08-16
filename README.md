@@ -11,7 +11,7 @@
 - Oxid
 ### TODO
 
-- Oxid
+- make it possible to run JTL and Oxid at the same time
 
 ### Use guide
 
