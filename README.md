@@ -8,6 +8,7 @@
 - JTL store 5
 - Magento 2
 - Woocommerce ( wordpress )
+- Oxid
 ### TODO
 
 - Oxid
@@ -41,6 +42,7 @@ After it finishes add following lines to your /etc/hosts
     127.0.0.1 shopware6.local
     127.0.0.1 jtl5.local
     127.0.0.1 woocommerce.local
+    127.0.0.1 oxid.local
 
 Navigate to any shop and finish the setup. (make sure to use http not https)
 
